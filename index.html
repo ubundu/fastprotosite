@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>D3 Media — CAD design & rapid prototyping in 24 hours</title>
-<meta name="description" content="CAD design and prototype 3D printing for inventors and small businesses. 24-hour turnaround on new designs and quick fixes." />
+<title>D3 Media — CAD design &amp; rapid prototyping in 24 hours · Zurich</title>
+<meta name="description" content="CAD design and prototype 3D printing for inventors and small businesses in the Zurich area. 24-hour turnaround on new designs and quick fixes." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
@@ -55,6 +55,30 @@
   .nav-links { display: flex; gap: 32px; }
   .nav-links a { font-size: 14px; color: var(--text-dim); transition: color .2s; }
   .nav-links a:hover { color: var(--text); }
+
+  /* nav right: lang switcher + cta */
+  .nav-right { display: flex; align-items: center; gap: 12px; }
+
+  /* Language switcher */
+  .lang-switch {
+    display: flex; align-items: center; gap: 0;
+    border: 1px solid var(--line-2); border-radius: 8px;
+    overflow: hidden; font-size: 12px; font-family: 'JetBrains Mono', monospace;
+  }
+  .lang-btn {
+    padding: 7px 11px;
+    background: transparent; border: none; cursor: pointer;
+    color: var(--text-muted);
+    transition: background .2s, color .2s;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    line-height: 1;
+  }
+  .lang-btn.active {
+    background: var(--accent); color: #fff;
+  }
+  .lang-btn:not(.active):hover { background: var(--bg-2); color: var(--text); }
+
   .nav-cta { font-size: 13px; padding: 9px 16px; border: 1px solid var(--line-2); border-radius: 8px; transition: border-color .2s, background .2s; }
   .nav-cta:hover { border-color: var(--accent); background: var(--accent-soft); }
   @media (max-width: 720px) { .nav-links { display: none; } }
@@ -435,11 +459,17 @@
       D3 Media
     </a>
     <div class="nav-links">
-      <a href="#services">Services</a>
-      <a href="#work">Work</a>
-      <a href="#contact">Contact</a>
+      <a href="#services" data-t="nav.services">Services</a>
+      <a href="#work" data-t="nav.work">Work</a>
+      <a href="#contact" data-t="nav.contact">Contact</a>
     </div>
-    <a href="#contact" class="nav-cta mono">Get a quote →</a>
+    <div class="nav-right">
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+        <button class="lang-btn active" id="btn-de" onclick="setLang('de')">DE</button>
+      </div>
+      <a href="#contact" class="nav-cta mono" data-t="nav.cta">Get a quote →</a>
+    </div>
   </div>
 </nav>
 
@@ -448,50 +478,50 @@
   <div class="wrap">
     <div class="eyebrow">
       <span class="dot pulse"></span>
-      <span class="mono">24-hour turnaround · Rapid prototypes &amp; quick fixes</span>
+      <span class="mono" data-t="hero.eyebrow">24-hour turnaround · Rapid prototypes &amp; quick fixes · Zurich area</span>
     </div>
-    <h1>We build in <span class="axis">all directions</span>.</h1>
-    <p class="hero-sub">
-      CAD design and prototype 3D printing for inventors and small businesses. Send us a sketch, a broken part, or a half-finished model — we deliver working files and printed prototypes inside 24 hours.
+    <h1 data-t="hero.h1">We build in <span class="axis">all directions</span>.</h1>
+    <p class="hero-sub" data-t="hero.sub">
+      CAD design and prototype 3D printing for inventors and small businesses in the Zurich area. Send us a sketch, a broken part, or a half-finished model — we deliver working files and printed prototypes inside 24 hours.
     </p>
     <div class="hero-cta">
       <a href="#contact" class="btn btn-primary">
-        Start a project
+        <span data-t="hero.cta.primary">Start a project</span>
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M5 12h14M13 5l7 7-7 7"/>
         </svg>
       </a>
-      <a href="#work" class="btn btn-ghost">See our work</a>
+      <a href="#work" class="btn btn-ghost" data-t="hero.cta.secondary">See our work</a>
     </div>
 
     <div class="hero-stats">
       <div class="stat">
         <div class="stat-num">24<span class="unit">h</span></div>
-        <div class="stat-label">Turnaround on most jobs</div>
+        <div class="stat-label" data-t="stat.turnaround">Turnaround on most jobs</div>
       </div>
       <div class="stat">
         <div class="stat-num">CAD<span class="unit">+</span></div>
-        <div class="stat-label">Onshape, Fusion, STEP, STL</div>
+        <div class="stat-label" data-t="stat.cad">Onshape, Fusion, STEP, STL</div>
       </div>
       <div class="stat">
         <div class="stat-num">1<span class="unit">x</span></div>
-        <div class="stat-label">No minimum order</div>
+        <div class="stat-label" data-t="stat.minorder">No minimum order</div>
       </div>
       <div class="stat">
         <div class="stat-num">∞<span class="unit"></span></div>
-        <div class="stat-label">Revisions until it's right</div>
+        <div class="stat-label" data-t="stat.revisions">Revisions until it's right</div>
       </div>
     </div>
   </div>
 </header>
 
-<!-- ============ SERVICES (2 only) ============ -->
+<!-- ============ SERVICES ============ -->
 <section id="services">
   <div class="wrap">
     <div class="sec-head">
-      <div class="sec-tag">01 — Services</div>
-      <h2>Two things, done quickly.</h2>
-      <p class="sec-sub">CAD is what we do most. 3D printing exists to put your design in your hand the same week.</p>
+      <div class="sec-tag" data-t="services.tag">01 — Services</div>
+      <h2 data-t="services.h2">Two things, done quickly.</h2>
+      <p class="sec-sub" data-t="services.sub">CAD is what we do most. 3D printing exists to put your design in your hand the same week.</p>
     </div>
 
     <div class="services-grid">
@@ -509,17 +539,17 @@
           <circle cx="10" cy="70" r="1.5" fill="#ff6b35"/>
           <circle cx="10" cy="30" r="1.5" fill="#ff6b35"/>
         </svg>
-        <div class="badge"><span>★</span> Primary service</div>
-        <h3>CAD design</h3>
-        <p>From a napkin sketch, photo, or rough STL — we model it properly in parametric CAD with manufacturable geometry, clean tolerances, and fully editable feature trees.</p>
+        <div class="badge"><span>★</span> <span data-t="cad.badge">Primary service</span></div>
+        <h3 data-t="cad.h3">CAD design</h3>
+        <p data-t="cad.p">From a napkin sketch, photo, or rough STL — we model it properly in parametric CAD with manufacturable geometry, clean tolerances, and fully editable feature trees.</p>
         <ul class="service-feats">
-          <li>New designs from scratch</li>
-          <li>Reverse-engineering existing parts</li>
-          <li>Quick fixes &amp; revisions on existing files</li>
-          <li>Onshape, Fusion 360, SolidWorks-compatible</li>
-          <li>STEP / IGES / STL / 3MF export</li>
+          <li data-t="cad.f1">New designs from scratch</li>
+          <li data-t="cad.f2">Reverse-engineering existing parts</li>
+          <li data-t="cad.f3">Quick fixes &amp; revisions on existing files</li>
+          <li data-t="cad.f4">Onshape, Fusion 360, SolidWorks-compatible</li>
+          <li data-t="cad.f5">STEP / IGES / STL / 3MF export</li>
         </ul>
-        <a class="service-meta service-link" href="#contact">Contact for a quote →</a>
+        <a class="service-meta service-link" href="#contact" data-t="service.quote">Contact for a quote →</a>
       </div>
 
       <!-- 3D PRINTING — secondary -->
@@ -531,16 +561,16 @@
           <path d="M50 35 L50 20"/>
           <circle cx="50" cy="15" r="3"/>
         </svg>
-        <div class="badge">Companion service</div>
-        <h3>Prototype 3D printing</h3>
-        <p>Your CAD design printed the same day so you can hold it, test it, break it, and iterate. We keep multiple printers running so prints don't queue.</p>
+        <div class="badge"><span data-t="print.badge">Companion service</span></div>
+        <h3 data-t="print.h3">Prototype 3D printing</h3>
+        <p data-t="print.p">Your CAD design printed the same day so you can hold it, test it, break it, and iterate. We keep multiple printers running so prints don't queue.</p>
         <ul class="service-feats">
-          <li>FDM &amp; resin (SLA) for prototypes</li>
-          <li>Functional or visual quality</li>
-          <li>Light finishing — sanding, priming</li>
-          <li>For prototypes only, not production runs</li>
+          <li data-t="print.f1">FDM &amp; resin (SLA) for prototypes</li>
+          <li data-t="print.f2">Functional or visual quality</li>
+          <li data-t="print.f3">Light finishing — sanding, priming</li>
+          <li data-t="print.f4">For prototypes only, not production runs</li>
         </ul>
-        <a class="service-meta service-link" href="#contact">Contact for a quote →</a>
+        <a class="service-meta service-link" href="#contact" data-t="service.quote">Contact for a quote →</a>
       </div>
 
     </div>
@@ -551,9 +581,9 @@
 <section id="work">
   <div class="wrap">
     <div class="sec-head">
-      <div class="sec-tag">02 — Selected work</div>
-      <h2>From our design library.</h2>
-      <p class="sec-sub">A rotating selection of CAD projects we've recently shipped — pulled from our Onshape workspace.</p>
+      <div class="sec-tag" data-t="work.tag">02 — Selected work</div>
+      <h2 data-t="work.h2">From our design library.</h2>
+      <p class="sec-sub" data-t="work.sub">A rotating selection of CAD projects we've recently shipped — pulled from our Onshape workspace.</p>
     </div>
 
     <div class="carousel-wrap">
@@ -570,8 +600,8 @@
       </div>
       <div class="carousel-dots" id="dots"></div>
       <div class="carousel-meta">
-        <span><span class="count" id="counter">01 / 06</span></span>
-        <a href="https://cad.onshape.com/documents?resourceType=resourceuserowner&nodeId=65bb625f02d991766804b726" target="_blank" rel="noopener">Browse full library →</a>
+        <span><span class="count" id="counter">01 / 04</span></span>
+        <a href="https://cad.onshape.com/documents?resourceType=resourceuserowner&nodeId=65bb625f02d991766804b726" target="_blank" rel="noopener" data-t="work.library">Browse full library →</a>
       </div>
     </div>
   </div>
@@ -581,128 +611,260 @@
 <section id="contact" class="contact">
   <div class="wrap">
     <div class="sec-head" style="margin-bottom: 56px;">
-      <div class="sec-tag">03 — Get in touch</div>
-      <h2>Got a sketch? A broken part?<br/>Let's design it.</h2>
-      <p class="sec-sub">Email us with a description, photo, or existing file. We reply within 4 hours during the business day.</p>
+      <div class="sec-tag" data-t="contact.tag">03 — Get in touch</div>
+      <h2 data-t="contact.h2">Got a sketch? A broken part?<br/>Let's design it.</h2>
+      <p class="sec-sub" data-t="contact.sub">Email us with a description, photo, or existing file. We reply within 4 hours during the business day.</p>
     </div>
 
     <a href="mailto:d3fastproto@gmail.com" class="email-card">
-      <div class="email-label">Direct line</div>
+      <div class="email-label" data-t="contact.label">Direct line</div>
       <div class="email-addr mono">d3fastproto@gmail.com</div>
     </a>
 
-    <div class="contact-extra">
-      Mon–Fri · 9am–6pm · Same-day reply for urgent jobs
+    <div class="contact-extra" data-t="contact.hours">
+      Mon–Fri · 9am–6pm · Zurich area · Same-day reply for urgent jobs
     </div>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    <div class="copy">© 2026 D3 Media · Built in all directions</div>
+    <div class="copy" data-t="footer.copy">© 2026 D3 Media · Zurich area · Built in all directions</div>
     <div class="copy"><a href="mailto:d3fastproto@gmail.com">d3fastproto@gmail.com</a></div>
   </div>
 </footer>
 
 <!-- ============================================================
-     CAROUSEL DATA — edit this array to add real Onshape designs.
-     Each entry needs: title, tag, description, link.
-     Optional: image (path to a JPG/PNG in this folder).
-     If image is omitted, a generated SVG placeholder is used.
+     TRANSLATIONS
 ============================================================ -->
 <script>
-  const ONSHAPE_BASE = "https://cad.onshape.com/documents";
-
-  const designs = [
-    {
-      title: "Desk arm",
-      tag: "Workspace hardware · Onshape",
-      description: "Articulating desk-mounted arm modeled parametrically in Onshape — adjustable joints and a clamp base, sized for standard desktops.",
-      link: "https://cad.onshape.com/documents/808354fd4853a8f0ef226fb6/w/a29d0e2eb1bb5bb1768aeb51/e/9e23c108719c32b88f6f95a4?renderMode=0&uiState=69fa0b289c885d4c8865bd2d",
-      // image: "images/desk-arm.jpg",
-    },
-    {
-      title: "Bathroom hook augment",
-      tag: "Augment · Onshape",
-      description: "Bolt-on add-on that extends a stock bathroom hook — designed to mount on an existing fixture without drilling new holes.",
-      link: "https://cad.onshape.com/documents/a1c40df0db95f71bddc1f90f/w/bc312b071a76c57867b2e550/e/06d36f53d3015c4330a7af7a?renderMode=0&uiState=69fa0b7ef662202ff911c40c",
-    },
-    {
-      title: "USB charger vertical mount",
-      tag: "Mount · Onshape",
-      description: "Wall-friendly vertical mount that holds a USB charging brick upright while keeping the cable tucked away.",
-      link: "https://cad.onshape.com/documents/a1c40df0db95f71bddc1f90f/w/bc312b071a76c57867b2e550/e/06d36f53d3015c4330a7af7a?renderMode=0&uiState=69fa0b7ef662202ff911c40c",
-    },
-    {
-      title: "USB valve custom enclosure",
-      tag: "Enclosure · Onshape",
-      description: "Snap-fit enclosure built around a USB-powered valve assembly, with internal channels for cabling and clean external access points.",
-      link: "https://cad.onshape.com/documents/8b4fb6c6e2bd298556d4a461/w/377d122061b363dffbbe0ce9/e/5d3fa2c6c3a7242b58d6800d?renderMode=0&uiState=69fa0c18d5790d8440ab5cdd",
-    },
-  ];
-
-  // Generates an SVG placeholder when no image is provided
-  function placeholderSVG(seed) {
-    const variants = [
-      `<g fill="none" stroke="#ff6b35" stroke-width="1.4">
-        <path d="M150 60 L240 110 L240 200 L150 250 L60 200 L60 110 Z" fill="#ff6b35" fill-opacity="0.08"/>
-        <path d="M150 60 L150 155 M60 110 L150 155 L240 110 M60 200 L150 155 L240 200 M150 155 L150 250"/>
-        <circle cx="150" cy="155" r="3" fill="#ff6b35"/>
-      </g>`,
-      `<g fill="none" stroke="#ff6b35" stroke-width="1.4">
-        <rect x="80" y="80" width="140" height="140" rx="6" fill="#ff6b35" fill-opacity="0.06"/>
-        <path d="M80 110 L220 110 M80 140 L220 140 M80 170 L220 170 M80 200 L220 200 M110 80 L110 220 M140 80 L140 220 M170 80 L170 220 M200 80 L200 220"/>
-        <circle cx="150" cy="150" r="6" fill="#ff6b35"/>
-      </g>`,
-      `<g fill="none" stroke="#ff6b35" stroke-width="1.4">
-        <circle cx="150" cy="150" r="70" fill="#ff6b35" fill-opacity="0.08"/>
-        <circle cx="150" cy="150" r="50"/>
-        <circle cx="150" cy="150" r="30"/>
-        <circle cx="150" cy="150" r="4" fill="#ff6b35"/>
-        <path d="M150 80 L150 220 M80 150 L220 150"/>
-      </g>`,
-      `<g fill="none" stroke="#ff6b35" stroke-width="1.4">
-        <path d="M70 220 L150 80 L230 220 Z" fill="#ff6b35" fill-opacity="0.1"/>
-        <path d="M100 220 L150 130 L200 220 M120 220 L150 170 L180 220"/>
-        <circle cx="150" cy="80" r="3" fill="#ff6b35"/>
-      </g>`,
-      `<g fill="none" stroke="#ff6b35" stroke-width="1.4">
-        <path d="M80 200 Q150 80 220 200" fill="#ff6b35" fill-opacity="0.08"/>
-        <path d="M80 200 L220 200 M100 200 L100 170 M130 200 L130 140 M160 200 L160 130 M190 200 L190 160"/>
-        <circle cx="150" cy="100" r="3" fill="#ff6b35"/>
-      </g>`,
-      `<g fill="none" stroke="#ff6b35" stroke-width="1.4">
-        <path d="M70 100 L160 70 L230 110 L230 200 L160 230 L70 200 Z" fill="#ff6b35" fill-opacity="0.08"/>
-        <path d="M70 100 L160 130 L230 110 M160 130 L160 230 M70 200 L160 130"/>
-      </g>`,
-    ];
-    return `<svg viewBox="0 0 300 300" preserveAspectRatio="xMidYMid meet">${variants[seed % variants.length]}</svg>`;
+const TRANSLATIONS = {
+  en: {
+    "nav.services": "Services",
+    "nav.work": "Work",
+    "nav.contact": "Contact",
+    "nav.cta": "Get a quote →",
+    "hero.eyebrow": "24-hour turnaround · Rapid prototypes & quick fixes · Zurich area",
+    "hero.sub": "CAD design and prototype 3D printing for inventors and small businesses in the Zurich area. Send us a sketch, a broken part, or a half-finished model — we deliver working files and printed prototypes inside 24 hours.",
+    "hero.cta.primary": "Start a project",
+    "hero.cta.secondary": "See our work",
+    "stat.turnaround": "Turnaround on most jobs",
+    "stat.cad": "Onshape, Fusion, STEP, STL",
+    "stat.minorder": "No minimum order",
+    "stat.revisions": "Revisions until it's right",
+    "services.tag": "01 — Services",
+    "services.h2": "Two things, done quickly.",
+    "services.sub": "CAD is what we do most. 3D printing exists to put your design in your hand the same week.",
+    "cad.badge": "Primary service",
+    "cad.h3": "CAD design",
+    "cad.p": "From a napkin sketch, photo, or rough STL — we model it properly in parametric CAD with manufacturable geometry, clean tolerances, and fully editable feature trees.",
+    "cad.f1": "New designs from scratch",
+    "cad.f2": "Reverse-engineering existing parts",
+    "cad.f3": "Quick fixes & revisions on existing files",
+    "cad.f4": "Onshape, Fusion 360, SolidWorks-compatible",
+    "cad.f5": "STEP / IGES / STL / 3MF export",
+    "print.badge": "Companion service",
+    "print.h3": "Prototype 3D printing",
+    "print.p": "Your CAD design printed the same day so you can hold it, test it, break it, and iterate. We keep multiple printers running so prints don't queue.",
+    "print.f1": "FDM & resin (SLA) for prototypes",
+    "print.f2": "Functional or visual quality",
+    "print.f3": "Light finishing — sanding, priming",
+    "print.f4": "For prototypes only, not production runs",
+    "service.quote": "Contact for a quote →",
+    "work.tag": "02 — Selected work",
+    "work.h2": "From our design library.",
+    "work.sub": "A rotating selection of CAD projects we've recently shipped — pulled from our Onshape workspace.",
+    "work.library": "Browse full library →",
+    "work.openOnshape": "Open in Onshape",
+    "contact.tag": "03 — Get in touch",
+    "contact.h2": "Got a sketch? A broken part?<br/>Let's design it.",
+    "contact.sub": "Email us with a description, photo, or existing file. We reply within 4 hours during the business day.",
+    "contact.label": "Direct line",
+    "contact.hours": "Mon–Fri · 9am–6pm · Zurich area · Same-day reply for urgent jobs",
+    "hero.h1": 'We build in <span class="axis">all directions</span>.',
+    "footer.copy": "© 2026 D3 Media · Zurich area · Built in all directions",
+  },
+  de: {
+    "nav.services": "Leistungen",
+    "nav.work": "Projekte",
+    "nav.contact": "Kontakt",
+    "nav.cta": "Angebot anfragen →",
+    "hero.eyebrow": "24-Stunden-Lieferzeit · Schnelle Prototypen & Korrekturen · Raum Zürich",
+    "hero.sub": "CAD-Design und Prototypen-3D-Druck für Erfinder und kleine Unternehmen im Raum Zürich. Schick uns eine Skizze, ein defektes Teil oder ein halbfertiges Modell — wir liefern funktionierende Dateien und gedruckte Prototypen innerhalb von 24 Stunden.",
+    "hero.cta.primary": "Projekt starten",
+    "hero.cta.secondary": "Unsere Arbeiten",
+    "stat.turnaround": "Lieferzeit für die meisten Aufträge",
+    "stat.cad": "Onshape, Fusion, STEP, STL",
+    "stat.minorder": "Keine Mindestbestellung",
+    "stat.revisions": "Korrekturen bis alles stimmt",
+    "services.tag": "01 — Leistungen",
+    "services.h2": "Zwei Dinge, schnell erledigt.",
+    "services.sub": "CAD ist unser Kerngeschäft. 3D-Druck bringt dein Design noch in derselben Woche in deine Hand.",
+    "cad.badge": "Hauptleistung",
+    "cad.h3": "CAD-Design",
+    "cad.p": "Von der Servietten-Skizze, einem Foto oder einer groben STL-Datei — wir modellieren es sauber in parametrischem CAD mit fertigungsgerechter Geometrie, sauberen Toleranzen und vollständig bearbeitbaren Featurebäumen.",
+    "cad.f1": "Neudesigns von Grund auf",
+    "cad.f2": "Reverse-Engineering bestehender Teile",
+    "cad.f3": "Schnelle Korrekturen & Überarbeitungen",
+    "cad.f4": "Onshape, Fusion 360, SolidWorks-kompatibel",
+    "cad.f5": "STEP / IGES / STL / 3MF Export",
+    "print.badge": "Ergänzungsleistung",
+    "print.h3": "Prototypen-3D-Druck",
+    "print.p": "Dein CAD-Design wird noch am selben Tag gedruckt, damit du es anfassen, testen, brechen und optimieren kannst. Mehrere Drucker laufen parallel — kein Warten in der Warteschlange.",
+    "print.f1": "FDM & Resin (SLA) für Prototypen",
+    "print.f2": "Funktionale oder visuelle Qualität",
+    "print.f3": "Leichte Nachbearbeitung — Schleifen, Grundieren",
+    "print.f4": "Nur für Prototypen, keine Serienfertigung",
+    "service.quote": "Angebot anfragen →",
+    "work.tag": "02 — Ausgewählte Projekte",
+    "work.h2": "Aus unserer Designbibliothek.",
+    "work.sub": "Eine rotierende Auswahl kürzlich abgeschlossener CAD-Projekte — direkt aus unserem Onshape-Workspace.",
+    "work.library": "Gesamte Bibliothek ansehen →",
+    "work.openOnshape": "In Onshape öffnen",
+    "contact.tag": "03 — Kontakt aufnehmen",
+    "contact.h2": "Eine Skizze? Ein defektes Teil?<br/>Wir designen es.",
+    "contact.sub": "Schreib uns mit einer Beschreibung, einem Foto oder einer vorhandenen Datei. Wir antworten innerhalb von 4 Stunden während der Geschäftszeiten.",
+    "contact.label": "Direkter Kontakt",
+    "contact.hours": "Mo–Fr · 9–18 Uhr · Raum Zürich · Gleichtags-Antwort bei dringenden Aufträgen",
+    "hero.h1": 'Wir bauen in <span class="axis">alle Richtungen</span>.',
+    "footer.copy": "© 2026 D3 Media · Raum Zürich · In alle Richtungen gebaut",
   }
+};
 
-  // Build slides
-  const track = document.getElementById('track');
-  const dotsWrap = document.getElementById('dots');
-  const counter = document.getElementById('counter');
+let currentLang = 'de';
+
+function setLang(lang) {
+  currentLang = lang;
+  document.documentElement.lang = lang;
+
+  // Update button states
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  document.getElementById('btn-de').classList.toggle('active', lang === 'de');
+
+  const t = TRANSLATIONS[lang];
+
+  // Update all data-t elements
+  document.querySelectorAll('[data-t]').forEach(el => {
+    const key = el.getAttribute('data-t');
+    if (t[key] !== undefined) {
+      el.innerHTML = t[key];
+    }
+  });
+
+  // Re-render carousel slides with translated "Open in Onshape" label
+  rebuildCarousel();
+}
+
+// ============================================================
+// CAROUSEL DATA
+// ============================================================
+const ONSHAPE_BASE = "https://cad.onshape.com/documents";
+
+const designs = [
+  {
+    title: "Desk arm",
+    title_de: "Schreibtischarm",
+    tag: "Workspace hardware · Onshape",
+    tag_de: "Büroausstattung · Onshape",
+    description: "Articulating desk-mounted arm modeled parametrically in Onshape — adjustable joints and a clamp base, sized for standard desktops.",
+    description_de: "Gelenkiger Schreibtischarm, parametrisch in Onshape modelliert — verstellbare Gelenke und eine Klemmhalterung, passend für Standardschreibtische.",
+    link: "https://cad.onshape.com/documents/808354fd4853a8f0ef226fb6/w/a29d0e2eb1bb5bb1768aeb51/e/9e23c108719c32b88f6f95a4?renderMode=0&uiState=69fa0b289c885d4c8865bd2d",
+  },
+  {
+    title: "Bathroom hook augment",
+    title_de: "Badezimmerhaken-Erweiterung",
+    tag: "Augment · Onshape",
+    tag_de: "Erweiterung · Onshape",
+    description: "Bolt-on add-on that extends a stock bathroom hook — designed to mount on an existing fixture without drilling new holes.",
+    description_de: "Aufsteckbare Erweiterung für einen handelsüblichen Badezimmerhaken — konstruiert für die Montage an vorhandenen Befestigungen ohne neue Bohrlöcher.",
+    link: "https://cad.onshape.com/documents/a1c40df0db95f71bddc1f90f/w/bc312b071a76c57867b2e550/e/06d36f53d3015c4330a7af7a?renderMode=0&uiState=69fa0b7ef662202ff911c40c",
+  },
+  {
+    title: "USB charger vertical mount",
+    title_de: "USB-Ladegerät Vertikalhalterung",
+    tag: "Mount · Onshape",
+    tag_de: "Halterung · Onshape",
+    description: "Wall-friendly vertical mount that holds a USB charging brick upright while keeping the cable tucked away.",
+    description_de: "Wandfreundliche Vertikalhalterung, die ein USB-Ladegerät aufrecht hält und das Kabel ordentlich verstaut.",
+    link: "https://cad.onshape.com/documents/a1c40df0db95f71bddc1f90f/w/bc312b071a76c57867b2e550/e/06d36f53d3015c4330a7af7a?renderMode=0&uiState=69fa0b7ef662202ff911c40c",
+  },
+  {
+    title: "USB valve custom enclosure",
+    title_de: "USB-Ventil Gehäuse",
+    tag: "Enclosure · Onshape",
+    tag_de: "Gehäuse · Onshape",
+    description: "Snap-fit enclosure built around a USB-powered valve assembly, with internal channels for cabling and clean external access points.",
+    description_de: "Einrastgehäuse für eine USB-betriebene Ventilanordnung, mit internen Kabelkanälen und sauberen externen Zugangsöffnungen.",
+    link: "https://cad.onshape.com/documents/8b4fb6c6e2bd298556d4a461/w/377d122061b363dffbbe0ce9/e/5d3fa2c6c3a7242b58d6800d?renderMode=0&uiState=69fa0c18d5790d8440ab5cdd",
+  },
+];
+
+// SVG placeholders
+function placeholderSVG(seed) {
+  const variants = [
+    `<g fill="none" stroke="#ff6b35" stroke-width="1.4">
+      <path d="M150 60 L240 110 L240 200 L150 250 L60 200 L60 110 Z" fill="#ff6b35" fill-opacity="0.08"/>
+      <path d="M150 60 L150 155 M60 110 L150 155 L240 110 M60 200 L150 155 L240 200 M150 155 L150 250"/>
+      <circle cx="150" cy="155" r="3" fill="#ff6b35"/>
+    </g>`,
+    `<g fill="none" stroke="#ff6b35" stroke-width="1.4">
+      <rect x="80" y="80" width="140" height="140" rx="6" fill="#ff6b35" fill-opacity="0.06"/>
+      <path d="M80 110 L220 110 M80 140 L220 140 M80 170 L220 170 M80 200 L220 200 M110 80 L110 220 M140 80 L140 220 M170 80 L170 220 M200 80 L200 220"/>
+      <circle cx="150" cy="150" r="6" fill="#ff6b35"/>
+    </g>`,
+    `<g fill="none" stroke="#ff6b35" stroke-width="1.4">
+      <circle cx="150" cy="150" r="70" fill="#ff6b35" fill-opacity="0.08"/>
+      <circle cx="150" cy="150" r="50"/>
+      <circle cx="150" cy="150" r="30"/>
+      <circle cx="150" cy="150" r="4" fill="#ff6b35"/>
+      <path d="M150 80 L150 220 M80 150 L220 150"/>
+    </g>`,
+    `<g fill="none" stroke="#ff6b35" stroke-width="1.4">
+      <path d="M70 220 L150 80 L230 220 Z" fill="#ff6b35" fill-opacity="0.1"/>
+      <path d="M100 220 L150 130 L200 220 M120 220 L150 170 L180 220"/>
+      <circle cx="150" cy="80" r="3" fill="#ff6b35"/>
+    </g>`,
+  ];
+  return `<svg viewBox="0 0 300 300" preserveAspectRatio="xMidYMid meet">${variants[seed % variants.length]}</svg>`;
+}
+
+const track = document.getElementById('track');
+const dotsWrap = document.getElementById('dots');
+const counter = document.getElementById('counter');
+
+let current = 0;
+const total = designs.length;
+
+function rebuildCarousel() {
+  const t = TRANSLATIONS[currentLang];
+  const openLabel = t['work.openOnshape'] || 'Open in Onshape';
+
+  // Rebuild slides
+  track.innerHTML = '';
+  dotsWrap.innerHTML = '';
 
   designs.forEach((d, i) => {
     const slide = document.createElement('div');
     slide.className = 'slide';
     slide.setAttribute('aria-roledescription', 'slide');
-    slide.setAttribute('aria-label', `${i+1} of ${designs.length}`);
+    slide.setAttribute('aria-label', `${i+1} of ${total}`);
+    const title = (currentLang === 'de' && d.title_de) ? d.title_de : d.title;
+    const tag   = (currentLang === 'de' && d.tag_de)   ? d.tag_de   : d.tag;
+    const desc  = (currentLang === 'de' && d.description_de) ? d.description_de : d.description;
     slide.innerHTML = `
       <div class="slide-img">
         <div class="grid-bg"></div>
         ${d.image
-          ? `<img src="${d.image}" alt="${d.title}" loading="lazy" />`
+          ? `<img src="${d.image}" alt="${title}" loading="lazy" />`
           : placeholderSVG(i)
         }
       </div>
       <div class="slide-body">
-        <div class="slide-tag">${d.tag}</div>
-        <h3>${d.title}</h3>
-        <p>${d.description}</p>
+        <div class="slide-tag">${tag}</div>
+        <h3>${title}</h3>
+        <p>${desc}</p>
         <a class="slide-link" href="${d.link}" target="_blank" rel="noopener">
-          Open in Onshape
+          ${openLabel}
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
         </a>
       </div>
@@ -710,52 +872,54 @@
     track.appendChild(slide);
 
     const dot = document.createElement('button');
-    dot.className = 'dot' + (i === 0 ? ' active' : '');
+    dot.className = 'dot' + (i === current ? ' active' : '');
     dot.setAttribute('aria-label', `Go to slide ${i+1}`);
     dot.addEventListener('click', () => goTo(i));
     dotsWrap.appendChild(dot);
   });
 
-  let current = 0;
-  const total = designs.length;
+  // Restore current position
+  track.style.transform = `translateX(-${current * 100}%)`;
+  counter.textContent = `${String(current + 1).padStart(2, '0')} / ${String(total).padStart(2, '0')}`;
+}
 
-  function goTo(i) {
-    current = (i + total) % total;
-    track.style.transform = `translateX(-${current * 100}%)`;
-    document.querySelectorAll('.dot').forEach((d, idx) => {
-      d.classList.toggle('active', idx === current);
-    });
-    counter.textContent = `${String(current + 1).padStart(2, '0')} / ${String(total).padStart(2, '0')}`;
-    resetAuto();
-  }
-
-  document.getElementById('prev').addEventListener('click', () => goTo(current - 1));
-  document.getElementById('next').addEventListener('click', () => goTo(current + 1));
-
-  // Keyboard
-  document.getElementById('carousel').addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowLeft') goTo(current - 1);
-    if (e.key === 'ArrowRight') goTo(current + 1);
+function goTo(i) {
+  current = (i + total) % total;
+  track.style.transform = `translateX(-${current * 100}%)`;
+  document.querySelectorAll('.dot').forEach((d, idx) => {
+    d.classList.toggle('active', idx === current);
   });
-  document.getElementById('carousel').setAttribute('tabindex', '0');
+  counter.textContent = `${String(current + 1).padStart(2, '0')} / ${String(total).padStart(2, '0')}`;
+  resetAuto();
+}
 
-  // Touch swipe
-  let startX = 0, dx = 0, dragging = false;
-  track.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; dragging = true; }, { passive: true });
-  track.addEventListener('touchmove', (e) => { if (dragging) dx = e.touches[0].clientX - startX; }, { passive: true });
-  track.addEventListener('touchend', () => {
-    if (!dragging) return;
-    if (Math.abs(dx) > 50) goTo(current + (dx < 0 ? 1 : -1));
-    dx = 0; dragging = false;
-  });
+document.getElementById('prev').addEventListener('click', () => goTo(current - 1));
+document.getElementById('next').addEventListener('click', () => goTo(current + 1));
 
-  // Auto-advance, pause on hover
-  let auto = setInterval(() => goTo(current + 1), 6500);
-  function resetAuto() { clearInterval(auto); auto = setInterval(() => goTo(current + 1), 6500); }
-  document.getElementById('carousel').addEventListener('mouseenter', () => clearInterval(auto));
-  document.getElementById('carousel').addEventListener('mouseleave', resetAuto);
+document.getElementById('carousel').addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowLeft') goTo(current - 1);
+  if (e.key === 'ArrowRight') goTo(current + 1);
+});
+document.getElementById('carousel').setAttribute('tabindex', '0');
 
-  counter.textContent = `01 / ${String(total).padStart(2, '0')}`;
+// Touch swipe
+let startX = 0, dx = 0, dragging = false;
+track.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; dragging = true; }, { passive: true });
+track.addEventListener('touchmove', (e) => { if (dragging) dx = e.touches[0].clientX - startX; }, { passive: true });
+track.addEventListener('touchend', () => {
+  if (!dragging) return;
+  if (Math.abs(dx) > 50) goTo(current + (dx < 0 ? 1 : -1));
+  dx = 0; dragging = false;
+});
+
+// Auto-advance, pause on hover
+let auto = setInterval(() => goTo(current + 1), 6500);
+function resetAuto() { clearInterval(auto); auto = setInterval(() => goTo(current + 1), 6500); }
+document.getElementById('carousel').addEventListener('mouseenter', () => clearInterval(auto));
+document.getElementById('carousel').addEventListener('mouseleave', resetAuto);
+
+// Initial build
+rebuildCarousel();
 </script>
 
 </body>
